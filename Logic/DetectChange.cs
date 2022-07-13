@@ -6,9 +6,6 @@ namespace EssentialNodes
     [TypeIcon(typeof(Unity.VisualScripting.NotEqual))]
     public class DetectChange : Unit
     {
-        [Inspectable]
-        public bool booleanValue;
-
         [DoNotSerialize, PortLabelHidden]
         public ControlInput enter;
 
