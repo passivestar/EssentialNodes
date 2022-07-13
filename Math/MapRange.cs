@@ -38,12 +38,13 @@ namespace EssentialNodes
             valueMax = ValueInput<float>(nameof(valueMax), 1f);
             outMin = ValueInput<float>(nameof(outMin), 0f);
             outMax = ValueInput<float>(nameof(outMax), 1f);
+            result = ValueOutput<float>(nameof(result), Operation);
+
             if (useCurve)
             {
                 curve = ValueInput<AnimationCurve>(nameof(curve), AnimationCurve.EaseInOut(0, 0, 1, 1));
                 Requirement(curve, result);
             }
-            result = ValueOutput<float>(nameof(result), Operation);
 
             Requirement(value, result);
             Requirement(valueMin, result);
