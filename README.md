@@ -1,6 +1,6 @@
 # Essential Nodes
 
-![essentialnodes](https://user-images.githubusercontent.com/60579014/178743723-97101d0c-2cf8-42cb-9f4c-6a9154c2f59b.jpg)
+![essentialnodes](https://user-images.githubusercontent.com/60579014/178745646-2f71521f-596a-4ca1-8611-a3c605c62e0f.jpg)
 
 A library of custom Unity Visual Scripting nodes
 
