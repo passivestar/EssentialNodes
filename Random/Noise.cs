@@ -107,7 +107,6 @@ namespace EssentialNodes
                 Requirement(unscaledTime, result);
             }
 
-            Requirement(startingValue, result);
             Requirement(amplitude, result);
             Requirement(octaves, result);
             Requirement(frequency, result);
