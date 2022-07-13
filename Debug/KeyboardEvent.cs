@@ -1,6 +1,10 @@
 using System;
 using Unity.VisualScripting;
+#if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
+#else
+using UnityEngine;
+#endif
 
 namespace EssentialNodes
 {
@@ -24,7 +28,11 @@ namespace EssentialNodes
         {
             isControlRoot = true;
             exit = ControlOutput(nameof(exit));
+#if ENABLE_INPUT_SYSTEM
             key = ValueInput<Key>(nameof(key), Key.Digit1);
+#else
+            key = ValueInput<KeyCode>(nameof(key), KeyCode.Alpha1);
+#endif
         }
 
         public IGraphElementData CreateData()
@@ -79,8 +87,13 @@ namespace EssentialNodes
 
         void Update(Flow flow)
         {
+#if ENABLE_INPUT_SYSTEM
             var key = flow.GetValue<Key>(this.key);
             if (Keyboard.current[key].wasPressedThisFrame)
+#else
+            var key = flow.GetValue<KeyCode>(this.key);
+            if (Input.GetKeyDown(key))
+#endif
             {
                 flow.Invoke(exit);
             }
