@@ -85,7 +85,7 @@ namespace EssentialNodes
                     result = ValueOutput<Vector4>(nameof(result), GetNoiseVector4);
                     break;
                 case ValueType.Quaternion:
-                    startingValue = ValueInput<Quaternion>(nameof(startingValue), Quaternion.identity);
+                    startingValue = ValueInput<Quaternion>(nameof(startingValue));
                     result = ValueOutput<Quaternion>(nameof(result), GetNoiseQuaternion);
                     break;
             }
