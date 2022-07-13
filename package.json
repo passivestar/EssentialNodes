@@ -1,0 +1,18 @@
+{
+    "name": "com.passivestar.essentialnodes",
+    "version": "0.1.0",
+    "displayName": "Essential Nodes",
+    "description": "A library of nodes for better visual scripting workflow",
+    "license": "See LICENSE.md",
+    "unity": "2022.1",
+    "keywords": [
+        "Visual Scripting",
+        "Nodes",
+        "Units",
+        "Bolt"
+    ],
+    "author": {
+        "name": "passivestar",
+        "url": "https://passivestar.name"
+    }
+}
