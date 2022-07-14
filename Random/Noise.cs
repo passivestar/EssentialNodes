@@ -122,13 +122,17 @@ namespace EssentialNodes
             }
         }
 
-        float GetNoise(float time, float amplitude, float frequency, float persistence, float offset = 0f)
+        float GetNoise(float time, float amplitude, float frequency, float persistence, float offset = 0f, bool positive = false)
         {
             float total = 0, amp = 1f, freq = 1f, maxValue = 0;
             for (int i = 0; i < _numberOfOctaves; i++)
             {
                 var val = time * frequency + (_octaveOffsets[i] + offset) * frequency;
-                var generatedValue = 1f - Mathf.PerlinNoise(val, val) * 2f;
+                var generatedValue = Mathf.PerlinNoise(val, val);
+                if (!positive)
+                {
+                    generatedValue = 1f - generatedValue * 2f;
+                }
                 total += generatedValue * amp;
                 amp *= persistence;
                 freq *= frequency;
@@ -174,9 +178,9 @@ namespace EssentialNodes
             var persistence = flow.GetValue<float>(this.persistence);
 
             return (Color)_startingValueColor + new Color(
-                GetNoise(time, amplitude, frequency, persistence),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2)
+                GetNoise(time, amplitude, frequency, persistence, 0f, true),
+                GetNoise(time, amplitude, frequency, persistence, _componentOffset, true),
+                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2, true)
             );
         }
 
