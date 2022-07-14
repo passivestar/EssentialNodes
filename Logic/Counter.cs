@@ -37,14 +37,20 @@ namespace EssentialNodes
             increment = ControlInput(nameof(increment), flow =>
             {
                 _currentValue += flow.GetValue<int>(add);
-                CheckTarget(flow);
+                if (hasTarget)
+                {
+                    CheckTarget(flow);
+                }
                 return exit;
             });
 
             decrement = ControlInput(nameof(decrement), flow =>
             {
                 _currentValue -= flow.GetValue<int>(add);
-                CheckTarget(flow);
+                if (hasTarget)
+                {
+                    CheckTarget(flow);
+                }
                 return exit;
             });
 
