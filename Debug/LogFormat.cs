@@ -7,7 +7,7 @@ namespace EssentialNodes
 {
     [UnitCategory("EssentialNodes/Debug")]
     [TypeIcon(typeof(UnityEngine.Debug))]
-    public class Log : Unit
+    public class LogFormat : Unit
     {
         [UnitHeaderInspectable("Arguments")]
         public int argsCount

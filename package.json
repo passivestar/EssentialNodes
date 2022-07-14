@@ -1,6 +1,6 @@
 {
     "name": "com.passivestar.essentialnodes",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "displayName": "Essential Nodes",
     "description": "A library of nodes for better visual scripting workflow",
     "license": "See LICENSE.md",
