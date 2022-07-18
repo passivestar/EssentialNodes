@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 
@@ -55,7 +55,7 @@ namespace EssentialNodes
         Vector4? _startingValueVector4 = null;
         Quaternion? _startingValueQuaternion = null;
 
-        const float _componentOffset = 1111.1111f;
+        const float ComponentOffset = 1111.1111f;
 
         int _numberOfOctaves = 1;
         List<float> _octaveOffsets = new();
@@ -179,8 +179,8 @@ namespace EssentialNodes
 
             return (Color)_startingValueColor + new Color(
                 GetNoise(time, amplitude, frequency, persistence, 0f, true),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset, true),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2, true)
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset, true),
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset * 2, true)
             );
         }
 
@@ -197,7 +197,7 @@ namespace EssentialNodes
 
             return (Vector2)_startingValueVector2 + new Vector2(
                 GetNoise(time, amplitude, frequency, persistence),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset)
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset)
             );
         }
 
@@ -214,8 +214,8 @@ namespace EssentialNodes
 
             return (Vector3)_startingValueVector3 + new Vector3(
                 GetNoise(time, amplitude, frequency, persistence),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2f)
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset),
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset * 2f)
             );
         }
 
@@ -232,9 +232,9 @@ namespace EssentialNodes
 
             return (Vector4)_startingValueVector4 + new Vector4(
                 GetNoise(time, amplitude, frequency, persistence),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2f),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 3f)
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset),
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset * 2f),
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset * 3f)
             );
         }
 
@@ -251,8 +251,8 @@ namespace EssentialNodes
 
             return (Quaternion)_startingValueQuaternion * Quaternion.Euler(
                 GetNoise(time, amplitude, frequency, persistence),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset),
-                GetNoise(time, amplitude, frequency, persistence, _componentOffset * 2)
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset),
+                GetNoise(time, amplitude, frequency, persistence, ComponentOffset * 2)
             );
         }
     }

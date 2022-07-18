@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using Unity.VisualScripting;
 
 namespace EssentialNodes
@@ -47,22 +47,16 @@ namespace EssentialNodes
 
         VariableDeclarations GetSource(Flow flow)
         {
-            switch (kind)
+            return kind switch
             {
-                case VariableKind.Flow:
-                    return flow.variables;
-                case VariableKind.Graph:
-                    return graph.variables;
-                case VariableKind.Object:
-                    return Variables.Object(flow.GetValue<GameObject>(gameObject));
-                case VariableKind.Scene:
-                    return Variables.ActiveScene;
-                case VariableKind.Application:
-                    return Variables.Application;
-                case VariableKind.Saved:
-                    return Variables.Saved;
-            }
-            return null;
+                VariableKind.Flow => flow.variables,
+                VariableKind.Graph => graph.variables,
+                VariableKind.Object => Variables.Object(flow.GetValue<GameObject>(gameObject)),
+                VariableKind.Scene => Variables.ActiveScene,
+                VariableKind.Application => Variables.Application,
+                VariableKind.Saved => Variables.Saved,
+                _ => null,
+            };
         }
 
         ControlOutput Enter(Flow flow)

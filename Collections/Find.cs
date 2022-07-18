@@ -1,4 +1,6 @@
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 
 namespace EssentialNodes
@@ -34,8 +36,9 @@ namespace EssentialNodes
 
         object GetResult(Flow flow)
         {
-            return flow.GetValue<List<object>>(inputList)
-                .Find(item =>
+            return flow.GetValue<IEnumerable>(inputList)
+                .Cast<object>()
+                .FirstOrDefault(item =>
                 {
                     _current = item;
                     return flow.GetValue<bool>(condition);

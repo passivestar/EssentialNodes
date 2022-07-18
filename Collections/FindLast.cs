@@ -1,5 +1,8 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using System.Linq;
+
 
 namespace EssentialNodes
 {
@@ -34,8 +37,9 @@ namespace EssentialNodes
 
         object GetResult(Flow flow)
         {
-            return flow.GetValue<List<object>>(inputList)
-                .FindLast(item =>
+            return flow.GetValue<IEnumerable>(inputList)
+                .Cast<object>()
+                .LastOrDefault(item =>
                 {
                     _current = item;
                     return flow.GetValue<bool>(condition);

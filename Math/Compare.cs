@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Unity.VisualScripting;
 
 namespace EssentialNodes
@@ -67,22 +67,16 @@ namespace EssentialNodes
 
         Func<Flow, bool> GetOperation(OperationType operationType)
         {
-            switch (operationType)
+            return operationType switch
             {
-                case OperationType.Greater:
-                    return OperationGreater;
-                case OperationType.GreaterOrEqual:
-                    return OperationGreaterOrEqual;
-                case OperationType.Less:
-                    return OperationLess;
-                case OperationType.LessOrEqual:
-                    return OperationLessOrEqual;
-                case OperationType.Equal:
-                    return OperationEqual;
-                case OperationType.NotEqual:
-                    return OperationNotEqual;
-            }
-            return OperationGreater;
+                OperationType.Greater => OperationGreater,
+                OperationType.GreaterOrEqual => OperationGreaterOrEqual,
+                OperationType.Less => OperationLess,
+                OperationType.LessOrEqual => OperationLessOrEqual,
+                OperationType.Equal => OperationEqual,
+                OperationType.NotEqual => OperationNotEqual,
+                _ => OperationGreater,
+            };
         }
 
         bool OperationGreater(Flow flow)
