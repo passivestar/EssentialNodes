@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Linq;
 using Unity.VisualScripting;
 
@@ -14,8 +14,8 @@ namespace EssentialNodes
 
         [DoNotSerialize, PortLabelHidden]
         public ValueOutput result;
-
-        System.Random _random = new System.Random();
+        
+        readonly System.Random _random = new();
 
         protected override void Definition()
         {
@@ -27,9 +27,10 @@ namespace EssentialNodes
 
         object Operation(Flow flow)
         {
-            var listValue = flow.GetValue<IEnumerable>(list).Cast<object>();
-            var index = _random.Next(0, listValue.Count());
-            return listValue.ElementAt(index);
+            var enumerable = flow.GetValue<IEnumerable>(list);
+            var listValue = enumerable.ToIList();
+            var index = _random.Next(0, listValue.Count);
+            return listValue[index];
         }
     }
 }

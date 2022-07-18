@@ -1,3 +1,4 @@
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 
@@ -35,12 +36,16 @@ namespace EssentialNodes
 
         int GetResult(Flow flow)
         {
-            return flow.GetValue<List<object>>(inputList)
-                .FindIndex(item =>
-                {
-                    _current = item;
-                    return flow.GetValue<bool>(condition);
-                });
+            var enumerable = flow.GetValue<IEnumerable>(inputList);
+            var i = 0;
+            foreach (var item in enumerable)
+            {
+                _current = item;
+                if (flow.GetValue<bool>(condition))
+                    return i;
+                ++i;
+            }
+            return -1;
         }
 
         object GetItem(Flow flow) => _current;

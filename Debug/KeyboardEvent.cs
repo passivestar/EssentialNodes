@@ -79,10 +79,8 @@ namespace EssentialNodes
 
         void TriggerUpdate(GraphReference reference)
         {
-            using (var flow = Flow.New(reference))
-            {
-                Update(flow);
-            }
+            using var flow = Flow.New(reference);
+            Update(flow);
         }
 
         void Update(Flow flow)

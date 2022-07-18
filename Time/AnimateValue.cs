@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using Unity.VisualScripting;
 
@@ -280,10 +280,8 @@ namespace EssentialNodes
 
         void TriggerUpdate(GraphReference reference)
         {
-            using (var flow = Flow.New(reference))
-            {
-                Update(flow);
-            }
+            using var flow = Flow.New(reference);
+            Update(flow);
         }
 
         void AssignOutputValues(Flow flow, Data data)
