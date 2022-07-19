@@ -22,7 +22,11 @@ namespace EssentialNodes
         [DoNotSerialize]
         public ValueOutput item;
 
+        [DoNotSerialize]
+        public ValueOutput index;
+
         object _current;
+        int _index;
 
         protected override void Definition()
         {
@@ -30,6 +34,7 @@ namespace EssentialNodes
             condition = ValueInput<bool>(nameof(condition));
             outputList = ValueOutput<IEnumerable>(nameof(outputList), GetList);
             item = ValueOutput<object>(nameof(item), GetItem);
+            index = ValueOutput<int>(nameof(index), GetIndex);
 
             Requirement(inputList, outputList);
             Requirement(condition, outputList);
@@ -39,13 +44,15 @@ namespace EssentialNodes
         {
             return flow.GetValue<IEnumerable>(inputList)
                 .Cast<object>()
-                .Where(item =>
+                .Where((item, ind) =>
                 {
                     _current = item;
+                    _index = ind;
                     return flow.GetValue<bool>(condition);
                 });
         }
 
         object GetItem(Flow flow) => _current;
+        int GetIndex(Flow flow) => _index;
     }
 }
