@@ -23,7 +23,7 @@ namespace EssentialNodes
 
         bool Operation(Flow flow)
         {
-            return UnityEngine.Random.value > flow.GetValue<float>(bias);
+            return UnityEngine.Random.value < flow.GetValue<float>(bias);
         }
     }
 }
