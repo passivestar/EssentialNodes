@@ -1,5 +1,5 @@
 {
-    "name": "EssentialNodes",
+    "name": "com.passivestar.essentialnodes",
     "rootNamespace": "",
     "references": [
         "Unity.VisualScripting.Core",
